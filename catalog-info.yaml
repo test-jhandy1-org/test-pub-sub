@@ -2,12 +2,10 @@ apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
   name: test-pub-sub
-  annotations:
-    openapi/ref-basepath: ./
 spec:
   type: asyncapi
   lifecycle: experimental
   owner: default/owner
   system: system:default/redemptions
   definition:
-    $asyncapi: aysncAPI-example.yaml
+    $text: ./aysncAPI-example.yaml
