@@ -1,0 +1,27 @@
+name: Create Pub/Sub Topic
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+
+    deploy:
+
+        name: Setup Gcloud Account
+        runs-on: ubuntu-latest
+        env:
+          REGION: test-pub-sub
+          PROJECT_ID: sunlit-theory-381720
+          TOPIC_NAME: 
+
+        steps:
+        - name: Setup GCloud
+          uses: google-github-actions/setup-gcloud@v0
+          with:
+            project_id: ${{ env.PROJECT_ID }}
+            service_account_email: ${{ secrets.GCP_EMAIL }}
+            service_account_key: ${{ secrets.GCP_CREDENTIALS }}
+
+        - name: Create Pub/Sub Topic
+          run: gcloud pubsub topics create $TOPIC_NAME
